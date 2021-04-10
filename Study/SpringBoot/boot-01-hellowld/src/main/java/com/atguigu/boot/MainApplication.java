@@ -1,5 +1,6 @@
 package com.atguigu.boot;
 
+import ch.qos.logback.core.db.DBHelper;
 import com.atguigu.boot.bean.Pet;
 import com.atguigu.boot.bean.User;
 import com.atguigu.boot.config.MyConfig;
@@ -49,6 +50,15 @@ public class MainApplication {
         Pet tom = run.getBean("tom",Pet.class);
 
         System.out.println ("用户的宠物：" + (user01.getPet() == tom));
+
+        String[] beanNamesForType = run.getBeanNamesForType(User.class);
+        System.out.println("=========");
+        for (String s : beanNamesForType){
+            System.out.println(s);
+        }
+
+        DBHelper bean1 = run.getBean(DBHelper.class);
+        System.out.println(bean1);
 
     }
 }

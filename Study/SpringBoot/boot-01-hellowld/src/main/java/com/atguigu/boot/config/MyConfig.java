@@ -1,10 +1,12 @@
 package com.atguigu.boot.config;
 
 
+import ch.qos.logback.core.db.DBHelper;
 import com.atguigu.boot.bean.Pet;
 import com.atguigu.boot.bean.User;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Import;
 
 /**
  * 1.配置类里面使用@Bean标注在方法上给容器注册组件，默认也是单实例的
@@ -13,7 +15,12 @@ import org.springframework.context.annotation.Configuration;
  * Full(proxyBeanMethods = true)
  * Lite(proxyBeanMethods = false)轻量级
  * 组建
+ *
+ * @Import({Pet.class,User.class, DBHelper.class})
+ *      给容器中自动创建出这两个类型的组件
  */
+
+@Import({Pet.class,User.class, DBHelper.class})
 @Configuration(proxyBeanMethods = true)//告诉SpringBoot这是一个配置类 == 配置文件
 public class MyConfig {
 

@@ -64,12 +64,12 @@ export default {
       console.log(this)
       // 这里不用添加分号
       this.$refs.loginFormRef.resetFields()
+    },
+    login () {
+      this.$refs.loginFormRef.validate((valid) => {
+        console.log(valid)
+      })
     }
-  },
-  login () {
-    this.$refs.loginFormRef.validate((valid) => {
-      console.log(valid)
-    })
   }
 }
 </script>

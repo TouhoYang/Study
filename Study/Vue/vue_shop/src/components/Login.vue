@@ -40,7 +40,7 @@ export default {
       // 这是登录表单的数据绑定对象
       loginForm: {
         username: 'admin',
-        password: 'admin'
+        password: '123456'
       },
       // 表单验证规则对象
       loginFormRules: {
@@ -66,8 +66,22 @@ export default {
       this.$refs.loginFormRef.resetFields()
     },
     login () {
-      this.$refs.loginFormRef.validate((valid) => {
-        console.log(valid)
+      this.$refs.loginFormRef.validate(async (valid) => {
+        // 视频22P
+        // console.log(valid)
+        // if (!valid) return
+        // 视频上的使用login由于不明原因导致了请求时的地址变成了192.168.1.106：8080的地址 没有正常连接上接口，所以这里直接使用完整的地址进行链接
+        const { data: res } = await this.$http.post('login', this.loginForm)
+        // console.log(res)
+        if (res.meta.status !== 200) return this.$message.error('登录失败')
+        this.$message.success('登录成功')
+        // 1.将登录唱功之后的token保存到客户端的sessionStorage中
+        //   1.1项目中除了登录之外的其他API接口必须在用户登录了之后才能访问
+        //   1.2token只能在当前网站打开期间生效,所以将token保存在sessionStorage中
+        console.log(res)
+        window.sessionStorage.setItem('token', res.data.token)
+        // 2.通过编程式导航跳转到后台主页,路由地址为"/home"
+        this.$router.push('/home')
       })
     }
   }

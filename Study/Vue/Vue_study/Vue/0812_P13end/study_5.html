@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<script type="text/javascript" src="../../js/vue.js">
+
+		</script>
+	</head>
+	<body>
+
+		<!-- 
+		 
+			1.Vue中的数据代理：
+				通过vm对象来代理data对象中属性的操作（读/写）
+			2.Vue中数据代理的好处：
+				更加方便地操作data中的数据
+			3.基本原理：
+				通过Object.defineProperty()把data对象中所有的属性添加到vm上，
+				为每个添加到vm上的属性，都指定一个getter/setter
+				在getter/setter内部去操作（读/写）data中对应的属性
+		 
+		 -->
+
+		<div id='admin'>
+			<h1>hello,{{name}},{{age}}</h1>
+		</div>
+
+	</body>
+	<script type="text/javascript">
+		Vue.config.productionTip = false
+
+		let data = {
+			name: 'main',
+			age: 18
+		}
+
+		const vm = new Vue({
+			el: '#admin',
+			data
+		})
+	</script>
+</html>

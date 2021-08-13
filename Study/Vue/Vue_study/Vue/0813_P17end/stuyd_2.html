@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>事件的修饰符</title>
+		<script type="text/javascript" src="../../js/vue.js">
+			
+		</script>
+		<style type="text/css">
+			*{
+				margin-top: 20px;
+			}
+			.demo1{
+				height: 50px;
+				background-color: skyblue;
+			}
+			.box1{
+				background-color: #63A35C;
+			}
+			.box2{
+				background-color: #795DA3;
+			}
+			div{
+				padding: 5px;
+			}
+			.list{
+				width: 200px;
+				height: 200px;
+				background-color: #BD2C00;
+				overflow: auto;
+			}
+			li{
+				height: 100px;
+			}
+		</style>
+	</head>
+	<body>
+		<div id = 'admin'>
+			<h2>Hello,{{name}}</h2>
+			<!-- prevent 阻止默认时间（常用） -->
+			<a href="https://www.baidu.com" @click.prevent="showInfo">Fine</a>
+			
+			
+			<!-- stop 阻止事件冒泡（常用） -->
+			<div class="demo1" @click="showInfo">
+				<a href="https://www.baidu.com" @click.stop.prevent="showInfo">Fine</a>
+			</div>
+			
+			<!-- once事件值出发一次（常用） -->
+			<button @click="showInfo">Hello</button>
+			
+			<!-- capture 使用事件的捕获模式 -->
+			<div class='box1' @click.capture="showMsg(1)">
+				div1
+				<div class='box2' @click="showMsg(2)">
+					div2
+				</div>
+			</div>
+			
+			<!-- self 只有event.target是当前操作的元素时才能触发 -->
+			<div class="demo1" @click.self="showInfo">
+				<button @click="showInfo">Fine</button>
+			</div>
+			
+			<!-- passive 事件的默认行为立刻执行，无需等待事件回调函数执行完毕 -->
+			
+			<!-- <ul class="list" @scroll.passive="demo"> -->
+			<!-- scroll 指的是滚动条的滚动 -->
+			<ul class="list" @wheel.passive="demo">
+			<!-- wheel 指的是我们鼠标的滚动轮 -->
+				<li>1</li>
+				<li>2</li>
+				<li>3</li>
+				<li>4</li>
+			</ul>
+			
+		</div>
+		
+		
+	
+	</body>
+	<script type="text/javascript">
+		Vue.config.productionTip = false
+		
+		const x = new Vue({
+			el : '#admin',
+			data:{
+				name:'main'
+			},
+			methods:{
+				showInfo(e){
+					// e.preventDefault()	//阻止跳转
+					alert('Hello')
+				},
+				showMsg(msg){
+					console.log(msg)
+				},
+				demo(){
+					console.log('hi')
+					// for(let x = 0 ; x<10000 ; x++){
+					// 	console.log('Hello')
+					// }
+				}
+			}
+		})
+	</script>
+</html>

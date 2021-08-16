@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>计算属性-methods</title>
+		<script type="text/javascript" src="../../js/vue.js">
+			
+		</script>
+	</head>
+	<body>
+		<div id = 'admin'>
+			姓:<input type="text" v-model:value='firstNmae' /><br><br>
+			名:<input type="text" v-model:value='lastName' /><br><br>
+			全名:<span>{{fullName()}}</span>
+		</div>
+	
+	</body>
+	<script type="text/javascript">
+		Vue.config.productionTip = false
+		
+		const vm = new Vue({
+			el : '#admin',
+			data:{
+				firstNmae:'张',
+				lastName:'三'
+			},
+			methods:{
+				fullName(){
+					
+					return this.firstNmae+this.lastName
+				}
+			}
+		})
+	</script>
+</html>

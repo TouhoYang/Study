@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
+		<meta name="color-scheme" content="light dark">
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no, minimal-ui">
+		<title>主页</title>
+	</head>
+	<style>
+		* {
+			padding: 0;
+			margin: 0;
+			box-sizing: border-box;
+		}
+
+		html {
+			height: 100%;
+			-webkit-tap-highlight-color: rgba(0, 0, 0, 0.1);
+			-webkit-focus-ring-color: rgba(0, 0, 0, 0);
+			/*-webkit-touch-callout: none; -webkit-user-select: none; -khtml-user-select: none; -moz-user-select: none; -ms-user-select: none; user-select: none;*/
+		}
+
+		body {
+			min-height: 100%;
+			max-width: 100%;
+			width: 600px;
+			margin: auto;
+			text-align: center;
+		}
+
+		body {
+			background-color: #d0e9f3;
+			background: #d0e9f3 url("/storage/emulated/0/Android/data/mark.via/files/content/bg.png") no-repeat fixed;
+			background-size: cover;
+			background-position-x: center;
+		}
+
+		.frosted-glass {
+			background-color: rgba(0, 0, 0, 0.0);
+			position: fixed;
+			left: 0;
+			top: 0;
+			width: 100%;
+			height: 100%;
+			z-index: -999;
+		}
+
+		#search_input {
+			height: 42px;
+			width: 95%;
+			outline: none;
+			border: none;
+			font-size: 15px;
+			background-color: transparent;
+		}
+
+		.search_part {
+			margin-bottom: 20px;
+		}
+
+		span {
+			display: block;
+			overflow: hidden;
+			padding-left: 5px;
+			vertical-align: middle;
+		}
+
+		.box a {
+			width: 100%;
+			height: 100%;
+			position: absolute;
+			left: 0;
+			top: 0;
+		}
+
+		.hint {
+			color: #2b2b2b;
+			font-size: 15px;
+			white-space: normal;
+			word-wrap: break-word;
+			overflow: auto;
+			text-overflow: ellipsis;
+			-o-text-overflow: ellipsis;
+			-ms-text-overflow: ellipsis;
+			padding: 50px 5px;
+			text-align: center;
+			margin: auto;
+		}
+
+		.logo {
+			font-size: 28px;
+			white-space: normal;
+			word-wrap: break-word;
+			overflow: auto;
+			text-decoration: none;
+			color: #1b1b1b;
+		}
+
+		.search.icon {
+			color: #666666;
+			width: 12px;
+			height: 12px;
+			border: solid 2px currentColor;
+			border-radius: 100%;
+			-webkit-transform: rotate(-45deg);
+			transform: rotate(-45deg);
+			text-align: center;
+			margin: auto;
+		}
+
+		.search.icon:before {
+			content: '';
+			position: absolute;
+			top: 10px;
+			left: 3px;
+			height: 5px;
+			width: 2px;
+			background-color: currentColor;
+		}
+
+		img.smaller {
+			height: 80px;
+			min-height: 80px;
+			object-fit: cover;
+			max-height: 80px;
+		}
+
+		#content {
+			position: absolute;
+			max-width: 600px;
+			width: 100%;
+		}
+
+		#content {
+			top: 25%;
+			transition: 0.14s;
+		}
+
+		@media only screen and (min-height:250px) {
+			#content {
+				top: 62px
+			}
+		}
+
+		@media only screen and (min-height:350px) {
+			#content {
+				top: 87px
+			}
+		}
+
+		@media only screen and (min-height:450px) {
+			#content {
+				top: 135px
+			}
+		}
+
+		@media only screen and (min-height:650px) {
+			#content {
+				top: 195px
+			}
+		}
+
+		@media only screen and (min-height:850px) {
+			#content {
+				top: 255px
+			}
+		}
+
+		.box {
+			border: 0;
+			position: relative;
+			display: inline-block;
+			text-align: center;
+		}
+
+		.url {
+			line-height: 24px;
+		}
+
+		.search_bar {
+			display: table;
+			vertical-align: middle;
+			width: 90%;
+			height: 42px;
+			max-width: 600px;
+			margin: 0 auto;
+			margin-top: 15px;
+		}
+
+		#search_submit {
+			display: none;
+			outline: none;
+			height: 42px;
+			width: 42px;
+			float: right;
+			font-size: 15px;
+			font-weight: bold;
+			border: none;
+			background-color: transparent;
+			padding: 0 10px 0 10px;
+		}
+
+		#bookmark_part {
+			text-align: center;
+			width: 90%;
+			max-width: 600px;
+			background-color: transparent;
+			margin: 0 auto;
+			padding: 0;
+			border-radius: 0px;
+		}
+
+		.title {
+			margin: 2px auto;
+			white-space: nowrap;
+			overflow: hidden;
+			text-overflow: ellipsis;
+			-o-text-overflow: ellipsis;
+			-ms-text-overflow: ellipsis;
+		}
+
+		.url {
+			height: 20px;
+			line-height: 20px;
+			margin: 0 auto;
+			white-space: nowrap;
+			overflow: hidden;
+			text-overflow: ellipsis;
+			-o-text-overflow: ellipsis;
+			-ms-text-overflow: ellipsis;
+			color: #2b2b2b;
+			font-size: 10px;
+		}
+
+		#box_container {
+			text-align: left;
+			margin: 0 auto;
+			font-size: 0;
+		}
+
+		.sort-ghost {
+			opacity: 0.3;
+		}
+
+		.bdSug_wpr {
+			overflow-y: scroll !important;
+			max-height: 30% !important;
+			background: rgba(255, 255, 255, 0.85) !important;
+			margin-right: -40px !important;
+			border-color: rgba(0, 0, 0, 0.1) !important;
+			border-radius: 0 0 10px 10px;
+		}
+
+		.bdSug_wpr table {
+			background: none !important;
+		}
+
+		.bdSug_wpr td {
+			margin: 4px !important;
+			padding: 10px !important;
+			color: #1b1b1b;
+			background: none;
+		}
+
+		.bdSug_sd {
+			height: 0px !important;
+		}
+
+		.bdSug_app {
+			display: none !important;
+		}
+
+		.search_bar {
+			border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+			background: transparent;
+		}
+
+		#search_input {
+			color: #1b1b1b;
+		}
+
+		#search_submit {
+			color: #1b1b1b;
+		}
+
+		.box {
+			margin: 0;
+			width: 72px;
+		}
+
+		.title {
+			color: #1b1b1b;
+			width: 3.4em;
+			line-height: 3.4em;
+			height: 3.4em;
+			font-size: 15px;
+		}
+
+		.url {
+			width: 56px;
+		}
+
+		@media only screen and (min-width:144px) {
+			#box_container {
+				width: 72px
+			}
+		}
+
+		@media only screen and (min-width:216px) {
+			#box_container {
+				width: 144px
+			}
+		}
+
+		@media only screen and (min-width:288px) {
+			#box_container {
+				width: 216px
+			}
+		}
+
+		@media only screen and (min-width:360px) {
+			#box_container {
+				width: 288px
+			}
+		}
+
+		@media only screen and (min-width:432px) {
+			#box_container {
+				width: 360px
+			}
+		}
+
+		@media only screen and (min-width:504px) {
+			#box_container {
+				width: 432px
+			}
+		}
+	</style>
+	<body>
+		<div class='frosted-glass'></div>
+		<div id="content">
+			<div class="search_part"><a class="logo" onclick="window.via.cmd(257);" title="书签">
+					<img class="smaller" src="file:///android_asset/logo.png">
+					</a>
+					<form onsubmit="return search()" class="search_bar" title="搜索"><button onclick="search()"
+							id="search_submit" value="" aria-label="网页前进">
+							<div class="search icon"></div>
+						</button><span><input class="search" onfocus="showButton()" onblur="hideButton()" type="text"
+								value="" autocomplete="off" id="search_input" title="搜索"></span></form>
+			</div>
+			<script type="text/javascript">
+				function showButton() {
+					document.getElementById("search_submit").style.display = "block"
+				}
+
+				function hideButton() {
+					var a = document.getElementById("search_input").value;
+					"" == a && (document.getElementById("search_submit").style.display = "none")
+				}
+
+				function search() {
+					var a = document.getElementById("search_input").value;
+					return "" != a && (window.via.searchText(a), document.getElementById("search_input").value = ""), !1
+				}
+			</script>
+			<script charset="gbk" src="file:///android_asset/opensug.js"></script>
+			<script type="text/javascript">
+				function show(str) {
+					var searchbox = document.getElementById("search_input");
+					searchbox.innerHTML = str;
+					searchbox.blur();
+					search();
+				}
+				var params = {
+					"XOffset": 0,
+					"YOffset": 0,
+					"fontColor": "#666666",
+					"fontColorHI": "#FFF",
+					"fontSize": "14px",
+					"borderColor": "#eee",
+					"bgcolorHI": "#7B90E3",
+					"sugSubmit": false
+				};
+				BaiduSuggestion.bind("search_input", params, show);
+			</script>
+		</div>
+	</body>
+</html>

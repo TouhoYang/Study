@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<title>深度监视</title>
+		<!-- 引入Vue -->
+		<script type="text/javascript" src="../../js/vue.js"></script>
+	</head>
+
+	<body>
+		<!-- 
+			Vue能监测到多层级数据的变化,但是watch不能,如果要用watch监测,则要加入 deep:true(默认为false)
+			深度监视:
+				1.Vue中的watch默认不监测对象内部值的改变(一层)
+				2.配置deep:true可以监测对象内部值改变(多层)
+			备注:
+				1.Vue自身可以监测对象内部值的改变,但Vue提供的watch默认不可以
+				2.使用给watch时更具数据的具体结构,决定是否采用深度监视
+		 -->
+		<!-- 新建容器 -->
+		<div id="admin">
+			<!-- <h2>今天天气{{isHot ? 'Hot' : 'Cool'}}</h2> -->
+			<!-- <button @click="change">切换天气</button> -->
+			<!-- @xxx='xxx' 可以写一些简单的语句 -->
+			<h2>今天天气{{inFo}}</h2>
+			<button @click="isHot = !isHot">切换天气</button>
+			<hr >
+			<h3>a 的值时:{{numbers.a}}</h3>
+			<button @click="numbers.a++">a+1</button>
+			<h3>a 的值时:{{numbers.b}}</h3>
+			<button @click="numbers.b++">b+1</button>
+			<button @click="numbers  = {a:666,b:888}">彻底改变</button>
+		</div>
+		<script type="text/javascript">
+			Vue.config.productionTip = false //阻止Vue在启动时产生生产提示
+
+			//创建Vue实例
+			const vm = new Vue({
+				el: '#admin',
+				data: {
+					isHot: true,
+					numbers:{
+						a : 1,
+						b : 1
+					}
+				},
+				computed: {
+					inFo() {
+						return this.isHot ? 'Hot' : 'Cool'
+					}
+				},
+				methods: {
+					// change(){
+					// 	this.isHot = !this.isHot
+					// }
+				},
+				watch:{
+					// immediate:true,//初始化时让handler调用
+					isHot:{
+						//handler什么时候被调用? 当isHot被修改了则调用
+						handler(newValue,oldValue){
+							console.log('isHost被修改了',newValue,oldValue)
+						}
+					},
+					'numbera.a':{
+						handler(){
+							console.log('a,改变了')
+						}
+					},
+					numbers:{//用着个检测numbers是检测numbers整个的地址,并不会检测numbers里面的a和b.
+						deep:true,//打开监听多级结构中所有属性的变化
+						handler(){
+							console.log('numbers改变了')
+						}
+					}
+				}
+			})
+
+			// vm.$watch('isHot', {
+			// 	immediate: true, //初始化时让handler调用
+			// 	//handler什么时候被调用? 当isHot被修改了则调用
+			// 	handler(newValue, oldValue) {
+			// 		console.log('isHost被修改了', newValue, oldValue)
+			// 	}
+			// })
+		</script>
+	</body>
+
+</html>

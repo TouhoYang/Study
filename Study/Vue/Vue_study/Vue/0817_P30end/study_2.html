@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<title>条件渲染</title>
+	<!-- 引入Vue -->
+	<script type="text/javascript" src="../../js/vue.js"></script>
+</head>
+
+<body>
+	
+	<!-- 
+		条件渲染：
+			1)v-if
+				写法:
+					1.v-if='表达式'
+					2.v-else-if='表达式'
+					3.v-else='表达式'
+				适用于:切换频率低的场景.
+				特点:不展示的dom元素直接移除
+				注意:v-if可以和v-else-if,v-if一起使用但是结构不能被打断
+			
+			2)v-show
+				写法:v-show='表达式'
+				适用于:切换频率高的场景
+				特点:不展示的dom元素未被一处,仅仅是使用样式隐藏掉
+			
+			3)备注:使用v-if的时候,元素可能无法获取到,而使用v-show一定可以获取到
+	 -->
+	
+	<!-- 新建容器 -->
+	<div id="admin">
+		<h2>当前n的值未: {{n}}</h2>
+		<button type="button" @click="n++">n+1</button>
+		
+		<!-- 使用v-show进行条件渲染 -->
+		<!-- <h2 v-show="false">{{name}}</h2> -->
+		<!-- <h2 v-show="n === 1">{{name}}</h2> -->
+		
+		<!-- 使用v-if进行条件渲染 -->
+		<!-- <h2 v-if="false">{{name}}</h2> -->
+		<!-- <h2 v-if="n === 1">{{name}}</h2> -->
+		
+		<!-- v-else和v-else-if -->
+		<!-- <div v-if="n === 1">Angular</div>
+		<div v-else-if="n === 2">React</div>
+		<div v-else-if="n === 3">Vue</div>
+		<div v-else>nice</div> -->
+		
+		<!-- v-if与template的配合使用 -->
+		<template v-if="n === 1">
+			<h2>Hello</h2>
+			<h2>main</h2>
+		</template>
+		
+	</div>
+	<script type="text/javascript">
+		Vue.config.productionTip = false//阻止Vue在启动时产生生产提示
+
+		//创建Vue实例
+		const vm = new Vue({
+			el:'#admin',
+			data:{
+				n:0
+			}
+		})
+	</script>
+</body>
+
+</html>

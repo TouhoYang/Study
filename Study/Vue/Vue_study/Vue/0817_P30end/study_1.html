@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>class样式绑定</title>
+		<script type="text/javascript" src="../../js/vue.js">
+
+		</script>
+		<style type="text/css">
+			.all {
+				border-style: solid;
+				padding: 20px;
+			}
+
+			.type1 {
+				background-color: #55A532;
+			}
+
+			.type2 {
+				background-color: #0086B3;
+			}
+
+			.type3 {
+				background-color: #BD2C00;
+			}
+
+			.box1 {
+				border-radius: 50px;
+			}
+
+			.box2 {
+				font-weight: 900;
+			}
+
+			.box3 {
+				box-shadow: 10px 10px 5px #888888;
+			}
+		</style>
+	</head>
+	<body>
+		<div id='admin'>
+			<!-- 绑定class样式 字符串写法,适用于:样式的类名不确定,需要动态指定 -->
+			<div class="all" :class="mood" @click="tap">
+				{{name}}
+			</div><br><br>
+			<!-- 绑定class样式 数组写法,适用于:样式的个数和名字都不确定 -->
+			<div class="all" :class="classArr">
+				{{name}}
+			</div><br><br>
+			<!-- 绑定class样式 对象写法,适用于:样式的类名确定,个数确定,需要动态指定 -->
+			<div class="all" :class="classObj" >
+				{{name}}
+			</div><br><br>
+			<!-- 绑定class样式 内联式写法,适用于:样式的个数和名字都不确定 -->
+			<div class="all" :style="styleObj">
+				{{name}}
+			</div>
+		</div>
+
+	</body>
+	<script type="text/javascript">
+		Vue.config.productionTip = false
+
+		const vm = new Vue({
+			el: '#admin',
+			data: {
+				name: '琉璃喵',
+				mood: 'type1',
+				classArr: ['box1', 'box2', 'box3'],
+				classObj:{
+					box1:true,
+					box2:true
+				},
+				styleObj:{
+					fontSize: '40px'
+				}
+			},
+			methods: {
+				tap() {
+					const arr = ['type1', 'type2', 'type3']
+					const index = Math.floor(Math.random() * 3)
+					this.mood = arr[index]
+				}
+			}
+		})
+	</script>
+</html>

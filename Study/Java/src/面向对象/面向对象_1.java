@@ -1,4 +1,4 @@
-public class test001 {
+public class 面向对象_1 {
     public static void main(String[] args) {
         Animal a = new Animal();
         Animal b = new Animal();//第一个Animal，意识是使用Animall这个class，第二个new就是代表我新建了一个Animal（）这个玩意儿，然后复制给了a

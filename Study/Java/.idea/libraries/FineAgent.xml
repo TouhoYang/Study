@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="FineAgent">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/激活文件/FineAgent.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

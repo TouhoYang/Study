@@ -1,4 +1,4 @@
-public class test002 {
+public class 面向对象_2 {
     public static void main(String[] args) {
         Cat a = new Cat();//新建了一个cat的实例化a
         System.out.println(a.name());//这里的name方法是Animal里面的方法

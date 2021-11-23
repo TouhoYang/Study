@@ -1,5 +1,5 @@
 public class Dog extends Animal {
-    void eat() {//自身的dog。eat方法
+    void eat() {//自身的dog.eat方法
 
         System.out.println("dog : eat");
     }

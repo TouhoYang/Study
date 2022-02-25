@@ -1,7 +1,7 @@
 import java.util.Arrays;
 
 public class test_003_数组排序 {
-    public static void main(String[] args){
+    public static void main(String... args){
         int[] ns = { 28, 12, 89, 73, 65, 18, 96, 50, 8, 36 };
         int[] s = ns;
         // 排序前:

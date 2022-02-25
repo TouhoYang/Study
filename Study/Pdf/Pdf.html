@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style type="text/css">
+        #the-canvas {
+            border: 1px solid black;
+        }
+    </style>
+</head>
+<body>
+    <script src="../Pdf/build/pdf.js"></script>
+    <h1>PDF.js "Hello , base64!" example</h1>
+    <canvas id="the-canbas"></canvas>
+</body>
+
+<script type="text/javascript">
+    pdfjsLib.GlobalWorkerOptions.workerSrc='../Pdf/build/pdf.worker.js';
+    var loadingTask = pdfjsLib.getDocument({
+        url:_url,
+    });
+    loadingTask.promise.then(function(pdf){
+        pdf.getPage(1).then(function(page){
+            var scale = 1.5;
+            var viewport = page.getViewport(scale);
+            var canvas = document.getElementById('the-canvas');
+            var context = canvas.getContext('2d');
+            canvas.height = viewport.height;
+            canvas.width = viewport.width;
+            var renderContext = {
+                canvasContext: context,
+                viewport: viewport,
+            };
+            page.render(renderContext);
+        })
+
+    })
+</script>
+
+</html>

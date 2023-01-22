@@ -44,7 +44,7 @@ print('a = "2"')
 print(type(a))
 
 a = "Hello"
-print('a = Hello')
+print('a = "Hello"')
 print(type(a))
 
 # boolean
@@ -57,6 +57,6 @@ print(type(a))
 # bytes
 print("\nbytes类型")
 a = bytes("Hello".encode("utf-8"))
-print("a = bytes('Hello'.encode('utf-8'))")
+print('a = bytes("Hello".encode("""utf-8"))')
 print(a)
 print(type(a))

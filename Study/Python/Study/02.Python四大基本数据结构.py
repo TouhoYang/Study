@@ -20,7 +20,11 @@ Python四大基本数据结构:list,tuple,dict,set
         创建:
             通过tuple()来新建一个元组
             通过()来声明一个元组
-
+    dict 字典 hashtable 通过hash（散列）函数将传入的key值生成的地址来查找value
+        作用：
+            通过key进行 返回 value
+        特点：
+            无序的
 
 '''
 

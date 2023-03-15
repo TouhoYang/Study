@@ -4,7 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="fcdb85a4-c87a-4160-869e-b8aea0d4d3c2" name="Changes" comment="" />
+    <list default="true" id="fcdb85a4-c87a-4160-869e-b8aea0d4d3c2" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Study/02.Python四大基本数据结构.py" beforeDir="false" afterPath="$PROJECT_DIR$/Study/02.Python四大基本数据结构.py" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -38,6 +41,12 @@
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
+    <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Touho_data\Github\Study\Study\Python" />
+    </key>
   </component>
   <component name="RunManager" selected="Python.02.Python四大基本数据结构">
     <configuration name="01.Python的六大基本类型 (1)" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
@@ -147,7 +156,12 @@
       <workItem from="1673286589780" duration="1631000" />
       <workItem from="1673627203390" duration="6000" />
       <workItem from="1673802138104" duration="3416000" />
-      <workItem from="1674275825175" duration="8795000" />
+      <workItem from="1674275825175" duration="8925000" />
+      <workItem from="1674723669508" duration="3692000" />
+      <workItem from="1675369171375" duration="2756000" />
+      <workItem from="1676225542444" duration="2102000" />
+      <workItem from="1676291226747" duration="1325000" />
+      <workItem from="1676827197103" duration="2047000" />
     </task>
     <servers />
   </component>
@@ -157,6 +171,6 @@
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/Python$01_Python__1_.coverage" NAME="01.Python的六大基本类型 (1) Coverage Results" MODIFIED="1674355392589" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Study" />
     <SUITE FILE_PATH="coverage/Python$Python.coverage" NAME="Python的六大基本类型 Coverage Results" MODIFIED="1674354830913" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Study" />
-    <SUITE FILE_PATH="coverage/Python$02_Python.coverage" NAME="02.Python四大基本数据结构 Coverage Results" MODIFIED="1674355443381" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Study" />
+    <SUITE FILE_PATH="coverage/Python$02_Python.coverage" NAME="02.Python四大基本数据结构 Coverage Results" MODIFIED="1674367542397" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Study" />
   </component>
 </project>
